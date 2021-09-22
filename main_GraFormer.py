@@ -41,12 +41,11 @@ def parse_args():
                         help='checkpoint directory')
     parser.add_argument('--snapshot', default=5, type=int, help='save models for every #snapshot epochs (default: 20)')
 
-    # Model arguments
     parser.add_argument('--n_head', type=int, default=4, help='num head')
     parser.add_argument('--dim_model', type=int, default=96, help='dim model')
     parser.add_argument('--n_layer', type=int, default=5, help='num layer')
-
-    # training
+    parser.add_argument('--dropout', default=0.25, type=float, help='dropout rate')
+    
     parser.add_argument('-b', '--batch_size', default=64, type=int, metavar='N',
                         help='batch size in terms of predicted frames')
     parser.add_argument('-e', '--epochs', default=100, type=int, metavar='N', help='number of training epochs')
@@ -54,11 +53,6 @@ def parse_args():
     parser.add_argument('--lr', default=1.0e-3, type=float, metavar='LR', help='initial learning rate')
     parser.add_argument('--lr_decay', type=int, default=50000, help='num of steps of learning rate decay')
     parser.add_argument('--lr_gamma', type=float, default=0.9, help='gamma of learning rate decay')
-    # parser.add_argument('--no_max', dest='max_norm', action='store_false', help='if use max_norm clip on grad')
-    # parser.set_defaults(max_norm=True)
-    parser.add_argument('--dropout', default=0.25, type=float, help='dropout rate')
-
-    # Experimental
     parser.add_argument('--downsample', default=1, type=int, metavar='FACTOR', help='downsample frame rate by factor')
 
     args = parser.parse_args()
