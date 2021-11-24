@@ -217,11 +217,11 @@ class GraFormer(nn.Module):
         attn = MultiHeadedAttention(n_head, dim_model)
         gcn = GraphNet(in_features=dim_model, out_features=dim_model, n_pts=n_pts)
 
-        if nodes_group is None:
-            for i in range(num_layers):
-                _gconv_layers.append(_ResChebGC(adj=self.adj, input_dim=hid_dim, output_dim=hid_dim,
+        
+        for i in range(num_layers):
+            _gconv_layers.append(_ResChebGC(adj=self.adj, input_dim=hid_dim, output_dim=hid_dim,
                                                 hid_dim=hid_dim, p_dropout=0.1))
-                _attention_layer.append(GraAttenLayer(dim_model, c(attn), c(gcn), dropout))
+            _attention_layer.append(GraAttenLayer(dim_model, c(attn), c(gcn), dropout))
 
         self.gconv_input = _gconv_input
         self.gconv_layers = nn.ModuleList(_gconv_layers)
