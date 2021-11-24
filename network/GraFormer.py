@@ -202,7 +202,7 @@ class GraphNet(nn.Module):
 
 
 class GraFormer(nn.Module):
-    def __init__(self, adj, hid_dim=128, coords_dim=(2, 3), num_layers=4, nodes_group=None,
+    def __init__(self, adj, hid_dim=128, coords_dim=(2, 3), num_layers=4,
                  n_head=4,  dropout=0.1, n_pts=21):
         super(GraFormer, self).__init__()
         self.n_layers = num_layers
